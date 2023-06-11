@@ -16,7 +16,19 @@ const images = [
 const imagesGallery = document.querySelector('.gallery');
 
 const imagesGalleryMarkup = images
-  .map(image => `<img src="${image.url}" alt="${image.alt}"></img>`)
+  .map(image => `<img src="${image.url}" alt="${image.alt}" width= "630px"></img>`)
   .join('');
 
-imagesGallery.innerHTML = imagesGalleryMarkup;
+imagesGallery.insertAdjacentHTML('afterbegin', imagesGalleryMarkup);
+
+imagesGallery.style.display = 'flex';
+imagesGallery.style.flexWrap = 'wrap';
+imagesGallery.style.gap = '15px';
+imagesGallery.style.listStyle = 'none';
+
+console.log(imagesGallery);
+
+
+
+
+
