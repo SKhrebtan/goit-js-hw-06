@@ -10,13 +10,13 @@ const createButton = document.querySelector('[data-create]');
 const destroyButton = document.querySelector('[data-destroy]');
 
 createButton.addEventListener('click', () => createBoxes(inputNumber.value));
-destroyButton.addEventListener('click', onInnerDelete);
+destroyButton.addEventListener('click', destroyBoxes);
 inputNumber.addEventListener('focus', onInputFocusActiveKeyboard);
 inputNumber.addEventListener('blur', onInputBlurDisableKeyboard);
 
 function inputFocusBlur(event) {
   if (event.code === 'Enter') { createBoxes(inputNumber.value) }
-  else if (event.code === 'Delete') { onInnerDelete() }
+  else if (event.code === 'Delete') { destroyBoxes() }
   console.log(event)
 };
 
@@ -46,7 +46,7 @@ function onInputBlurDisableKeyboard() {
 
 inputNumber.addEventListener('wheel', () => { });
   
-function onInnerDelete() {
+function destroyBoxes() {
   inputNumber.value = '';
   boxContainer.innerHTML = '';
 }
