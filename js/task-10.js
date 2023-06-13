@@ -11,11 +11,38 @@ const destroyButton = document.querySelector('[data-destroy]');
 
 createButton.addEventListener('click', () => createBoxes(inputNumber.value));
 destroyButton.addEventListener('click', onInnerDelete);
-inputNumber.addEventListener('focus', () => {document.addEventListener("keydown", event => {
+inputNumber.addEventListener('focus', onInputFocusActiveKeyboard);
+inputNumber.addEventListener('blur', onInputBlurDisableKeyboard);
+
+function inputFocusBlur(event) {
   if (event.code === 'Enter') { createBoxes(inputNumber.value) }
   else if (event.code === 'Delete') { onInnerDelete() }
   console.log(event)
-})})
+};
+
+function onInputFocusActiveKeyboard() {
+  document.addEventListener("keydown", inputFocusBlur)
+};
+
+function onInputBlurDisableKeyboard() {
+  document.removeEventListener("keydown", inputFocusBlur)
+};
+
+// function onInputFocusActiveKeyboard() {
+//   document.addEventListener("keydown", event => {
+//   if (event.code === 'Enter') { createBoxes(inputNumber.value) }
+//   else if (event.code === 'Delete') { onInnerDelete() }
+//   console.log(event)
+//   })
+// }
+
+// function onInputBlurDisableKeyboard() {
+//     document.removeEventListener("keydown", event => {
+//   if (event.code === 'Enter') { createBoxes(inputNumber.value) }
+//   else if (event.code === 'Delete') { onInnerDelete() }
+//   console.log(event)
+//   })
+// }
 
 inputNumber.addEventListener('wheel', () => { });
   
