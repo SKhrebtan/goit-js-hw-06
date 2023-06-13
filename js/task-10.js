@@ -11,23 +11,22 @@ const destroyButton = document.querySelector('[data-destroy]');
 
 createButton.addEventListener('click', () => createBoxes(inputNumber.value));
 destroyButton.addEventListener('click', onInnerDelete);
- 
-document.addEventListener("keydown", event => {
+inputNumber.addEventListener('focus', () => {document.addEventListener("keydown", event => {
   if (event.code === 'Enter') { createBoxes(inputNumber.value) }
   else if (event.code === 'Delete') { onInnerDelete() }
-})
+  console.log(event)
+})})
+
+inputNumber.addEventListener('wheel', () => { });
   
 function onInnerDelete() {
   inputNumber.value = '';
   boxContainer.innerHTML = '';
 }
 
-inputNumber.addEventListener('wheel', () => {
-  let counter = 0;
-  counter += 1;
-})
 
 function createBoxes(amount) {
+
   let divElements = [];
 
   for (let i = 0; i < amount; i += 1){    
