@@ -5,7 +5,8 @@ validationInput.addEventListener('blur', onValidationColorChange);
 
 
 function onValidationColorChange(event) {
-    if (event.currentTarget.value.length < validationInput.getAttribute('data-length'))
+    if (event.currentTarget.value.length < validationInput.getAttribute('data-length')
+        || event.currentTarget.value.length > validationInput.getAttribute('data-length'))
     {
         validationInput.classList.add('invalid');
         validationInput.classList.remove('valid');
